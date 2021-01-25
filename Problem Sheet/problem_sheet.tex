@@ -1,0 +1,177 @@
+\documentclass[11pt,a4paper]{article} 
+\usepackage{graphicx} 
+\usepackage{amssymb, amsmath} 
+\usepackage[margin=1cm]{geometry}
+\usepackage[colorlinks=true,urlcolor=blue]{hyperref}
+
+\begin{document}
+\title{Introduction to Fortran: Problem Sheet}
+\author{Chris Cooling}
+\maketitle
+\pagestyle{empty}
+\thispagestyle{empty}
+
+\section{Compilation}
+\begin{itemize}
+\item Obtain the code examples for this session
+\begin{itemize}
+\item Download from github: https://github.com/coolernato/Intro-to-Fortran.git
+\end{itemize}
+\item Find the “Compilation” directory
+\item Source.f90 should be compiled as a single file
+\item Source1.f90 and Source2.f90 should be compiled together
+\item Compile and run the files by either:
+\begin{itemize}
+\item Compile it on your own computer and run it
+\item Copy and paste it into https://www.onlinegdb.com , select “Fortran” in the top right and click “Run”
+\end{itemize}
+\end{itemize}
+
+\section{My First Code}
+\begin{itemize}
+    \item Find the ``My\_First\_Program” directory
+    \item Compile and run ``my\_first\_program.f90"
+    \item Experiment with:
+\begin{itemize}
+    \item Changing the words in quotation marks following the print statement
+    \item Adding more print statements
+\end{itemize}
+    \item You will need to recompile between making a change and running your program
+\end{itemize}
+
+\section{Variables}
+
+\subsection{Mathematical Operators}
+There are 5 identical cubes, each with a side length of 3.2m. Calculate and print:
+
+\begin{itemize}
+    \item The volume of one cube
+    \item The area of all faces of one cube
+    \item The volume of all cubes
+    \item The area of all cubes
+    \item The surface area to volume ratio of the cubes
+\end{itemize}
+
+\subsection{Order of Operations}
+\begin{itemize}
+    \item Find the “Variables” directory
+    \item Compile the “order\_of\_operations” file
+    \item Write down what you expect the value of the different cases to be
+    \item Run the file
+    \item Check the results are what you expect
+\end{itemize}
+
+\subsection{Arrays}
+A location in 3d Cartesian space may be represented by (x,y,z) coordinates. This may be represented by a dimension 1 array with size 3.
+
+\begin{itemize}
+    \item Create a 1d array with three elements to represent Position A, which is at (1,2,1)
+    \item Calculate the location of Position B, which has a displacement of (3,-4,1) from Position A
+    \item Calculate the location of Position C, which is twice as far from the origin as Position B
+    \item Calculate the location of position D, which is found by rotating position C 45$^{o}$ around the z axis (clockwise when viewed from above). To rotate a location around the z axis in this manner by an angle $\theta$, it may be multiplied by the matrix:
+\end{itemize}
+
+\begin{equation}
+\begin{pmatrix}
+\cos{(\theta)} & -\sin{(\theta)} & 0\\
+\sin{(\theta)} & \cos{(\theta)} & 0 \\
+0 & 0 & 1
+\end{pmatrix}
+\end{equation}
+
+\begin{itemize}
+    \item Calculate the straight line distance between Position D and the origin
+\end{itemize}
+
+Extension:
+\begin{itemize}
+    \item Repeat the above, but with three points, all contained in a single two-dimensional array
+    \item Initial points to use are (1,2,1), (-1,0,1) and (-3, -2, -2.5)
+\end{itemize}
+
+\section{Conditionals}
+\begin{itemize}
+    \item In the Conditionals directory open the exercise\_conditionals.f90 file
+    \item Write down what you think will be printed for each case
+    \item Compile and run the file and check the results are what you expected
+\end{itemize}
+
+\section{Loops}
+For each of the following tasks, write a piece of code using "do" or "do while" loops to achieve the following effects:
+\begin{itemize}
+    \item Print the numbers 1-20.
+    \begin{itemize}
+        \item If a number is a multiple of 3, print "Fizz" instead
+        \item If a number is a multiple of 5, print "Buzz" instead
+        \item If a number is a multiple of 3 and 5, print "FizzBuzz" instead
+    \end{itemize}
+    \item Calculate the value of the expression $\sum\limits_{n=1}^{\infty}0.5^{n} = 0.5+0.25+0.125+0.0625+\hdots$
+    \begin{itemize}
+        \item Use a variable to keep track of the increasing sum
+        \item Each iteration of your loop should add a new value to the increasing sum
+        \item When the difference between the increasing sum in one iteration of your loop and the previous is less than 0.0001, the loop should stop
+        \item Print the final value
+    \end{itemize}
+\end{itemize}
+
+\section{Subroutines}
+
+Create a subroutine named "swap". It should:
+
+\begin{itemize}
+    \item Take three arguments:
+    \begin{itemize}
+        \item A one-dimensional array of 5 reals
+        \item Two integers
+    \end{itemize}
+    \item Swap the values of the entries in the array with the indices of the two provided integers
+\end{itemize}
+
+Check the subroutine works with a couple of values.
+
+What happens if you provide a value for one of the integers which is greater than 5 or less than 1? Would you prefer something else to happen instead?
+
+\section{Functions}
+Write a function:
+\begin{itemize}
+    \item Named "cuboid\_volume"
+    \item Takes the real arguments "height", "width", "length"
+    \item Returns the product of these values
+\end {itemize}
+Call this function with the following values and verify it produces the correct answers:
+\begin{itemize}
+    \item Height=2.0, width=3.0, length=1.5
+    \item Height=3.0, width=10.0, length=4.0
+\end {itemize}
+
+\section{Modules}
+Computer codes can be very useful for calculating statistics of a dataset. The mean $\bar{x}$ and standard deviation $\sigma$ of a dataset containing $N$ entries $x_{i}$ are defined as:
+
+\begin{alignat}{1}
+    \bar{x} & = \frac{\sum\limits_{i=1}^{N} x_{i}}{N} \\
+    \sigma &= \sqrt{\left(\frac{\sum\limits_{i=1}^{N} x_{i}^{2}}{N}-\bar{x}^{2}\right)}
+\end{alignat}
+
+Create two modules:
+\begin{itemize}
+    \item Named ``statistical\_moments'', containing:
+    \begin{itemize}
+        \item mean: A function which returns the mean of a 1D array with a deferred size
+        \item standard\_deviation: A function which returns the standard deviation of a 1D array with a deferred size
+    \end{itemize}
+    \item Named ``analysis'', containing:
+    \begin{itemize}
+        \item stats\_analyser: A subroutine which takes in a 1D array of deferred size and prints a message to the screen giving the mean and standard deviation of the array
+    \end{itemize}
+\end{itemize}
+
+Call stats\_analyser from a main program named ``stats\_example''with the following datasets and ensure the resultant mean and standard deviation are correct:
+\begin{itemize}
+    \item (1, 2, 3, 4, 5, 6, 7, 8, 9, 10) should give a mean of 5.5 and a standard deviation of 2.87
+    \item (1.01, 1.00, 0.99, 1.02, 0.98) should give a mean of 1.0 and a standard deviation of  0.0141
+\end{itemize}
+
+\section{Errors}
+Make a copy of the source file ``compilation\_errors\_exercise.f90''. It contains many errors for a very simple program. Try to compile the code and use the errors the compiler gives you to work out what's wrong with it and fix it.
+
+\end{document}
