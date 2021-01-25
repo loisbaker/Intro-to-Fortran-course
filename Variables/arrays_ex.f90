@@ -45,6 +45,7 @@ program arrays_ex
     print*, "C row 3", positionsC(3,:)
 
     positionsD = matmul(rot_mat,positionsC)
+    ! Could also do this with the transposed matrix, one column at a time
 
     distancesD(1) = sqrt(dot_product(positionsD(:,1),positionsD(:,1)))
     distancesD(2) = sqrt(dot_product(positionsD(:,2),positionsD(:,2)))
