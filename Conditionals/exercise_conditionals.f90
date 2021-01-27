@@ -14,9 +14,9 @@ program exercise_conditionals
     real2=2.0
 
     logical2=real1>real2
-
+    !logical2 is false
     print*, logical1 .or. logical2
-
+    ! F
     print*, "CASE 2"
     real1=1.0
     real2=2.0
@@ -26,9 +26,9 @@ program exercise_conditionals
     else
         print*, "B"
     end if
-
+    ! A
     print*, "C"
-
+    ! C
     print*, "CASE 3"
     real1=1.0
     real2=2.0
@@ -40,7 +40,7 @@ program exercise_conditionals
     else if (.true.)then
         print*, "C"
     end if
-
+    ! B
     print*, "CASE 4"
     real1=1.0
     real2=1.0
@@ -52,7 +52,7 @@ program exercise_conditionals
     else
         print*, "C"
     end if
-
+    ! C
     print*, "CASE 5"
     real1=1.0
     real2=2.0
@@ -62,5 +62,5 @@ program exercise_conditionals
     else if(.false. .and. (.not. real1/=real2))then
         print*, "B"
     end if
-
+    ! Nothing
 end program exercise_conditionals

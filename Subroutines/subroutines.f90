@@ -1,4 +1,5 @@
 program subroutines
+    implicit none ! This works for inside the subroutines too
     integer   ::  sum_current, product_current
 
     !Test the function on some values
